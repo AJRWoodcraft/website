@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJR Woodcraft | Handcrafted Goods & Store Manager</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wood: {
+                            50: '#FDFBF7',
+                            100: '#F4EFE6',
+                            200: '#E2D4C0',
+                            300: '#C8B092',
+                            400: '#A98965',
+                            500: '#8A6943',
+                            600: '#6E4F31',
+                            700: '#533B24',
+                            800: '#3A2818',
+                            900: '#23180E',
+                            950: '#140D07',
+                        },
+                        amber: {
+                            accent: '#D4AF37',
+                            bright: '#F5B027',
+                            warm: '#E2872A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #140D07;
+            color: #E2D4C0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .wood-pattern {
+            background-color: #140d07;
+            background-image: radial-gradient(#23180e 1.5px, transparent 0);
+            background-size: 28px 28px;
+        }
+        .glass-panel {
+            background: rgba(35, 24, 14, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(169, 137, 101, 0.22);
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(35, 24, 14, 0.9) 0%, rgba(20, 13, 7, 0.96) 100%);
+            border: 1px solid rgba(169, 137, 101, 0.18);
+        }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .wood-gradient-text {
+            background: linear-gradient(135deg, #F5B027 0%, #D4AF37 50%, #A98965 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #140D07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3A2818;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6E4F31;
+        }
+    </style>
+</head>
+<body class="wood-pattern min-h-screen flex flex-col antialiased">
+
+    <!-- Top Merchant Bar (Admin Only) -->
+    <div id="topMerchantBar" class="admin-element hidden bg-wood-900 border-b border-wood-800 text-amber-accent/90 text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-2 flex-wrap">
+        <span><i class="fa-solid fa-wrench mr-1"></i> <strong>Store Manager Active:</strong> Upload photos, edit prices/descriptions, or add products anytime.</span>
+        <button onclick="scrollToGuide()" class="underline text-amber-bright font-bold hover:text-white transition-colors ml-1">View Setup Guide</button>
+        <button onclick="exitAdminMode()" class="ml-2 px-2.5 py-1 rounded bg-wood-800 hover:bg-wood-700 text-amber-bright hover:text-white font-bold text-[11px] border border-wood-700 transition-colors flex items-center gap-1 shadow-sm">
+            <i class="fa-solid fa-eye-slash"></i> Exit Admin Mode
+        </button>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-wood-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-accent to-wood-700 flex items-center justify-center text-wood-950 font-bold text-xl font-serif shadow-lg group-hover:scale-105 transition-transform">
+                        AJR
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-xl font-bold tracking-wider text-wood-100 group-hover:text-amber-accent transition-colors">AJR WOODCRAFT</span>
+                        <span class="text-[10px] tracking-widest text-wood-400 font-sans uppercase">Handcrafted Woodware • Est. 2024</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium text-wood-200">
+                    <a href="#hero" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Home</a>
+                    <a href="#shop" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Shop Collections</a>
+                    <a href="#howTo" class="admin-element hidden hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent text-amber-bright font-bold"><i class="fa-solid fa-camera mr-1"></i> Image Instructions</a>
+                    <a href="#commission" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Custom Order</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Search Input -->
+                    <div class="relative hidden lg:block">
+                        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search crafts..." class="bg-wood-900/90 text-wood-100 text-sm rounded-full pl-9 pr-4 py-2 border border-wood-700 focus:outline-none focus:border-amber-accent w-48 transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-wood-400 text-xs"></i>
+                    </div>
+
+                    <!-- Manage Store / Image Admin Trigger (Admin Only) -->
+                    <button onclick="openImageManagerModal('add')" class="admin-element hidden px-3.5 py-2 rounded-lg bg-amber-accent text-wood-950 font-bold text-xs hover:brightness-110 transition-all flex items-center space-x-1.5 shadow-md">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>Add Photo / Product</span>
+                    </button>
+
+                    <!-- Cart Trigger -->
+                    <button onclick="openCartModal()" class="relative p-2.5 rounded-full bg-wood-800/80 border border-wood-700 text-wood-200 hover:text-amber-accent hover:border-amber-accent/50 transition-all">
+                        <i class="fa-solid fa-basket-shopping text-lg"></i>
+                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-amber-accent text-wood-950 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner & Intro Section -->
+    <section id="hero" class="pt-6 pb-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+        <!-- 1. Banner View with Live Edit Button -->
+        <div class="relative rounded-2xl overflow-hidden border border-wood-700/80 shadow-2xl bg-wood-950 group min-h-[160px] flex items-center justify-center">
+            <img id="heroBannerImg" src="Gemini_Generated_Image_gmduj5gmduj5gmdu.jpg" 
+                 onerror="this.src='https://placehold.co/1200x400/23180E/F5B027?text=AJR+Woodcraft+Handcrafted+Banner'"
+                 alt="AJR Woodcraft Handcrafted Banner" 
+                 class="w-full h-auto object-contain max-h-[500px] mx-auto block group-hover:scale-[1.01] transition-transform duration-500">
+            
+            <div class="absolute bottom-3 right-3 flex items-center space-x-2">
+                <button onclick="openImageManagerModal('banner')" class="admin-element hidden bg-amber-accent/95 hover:bg-amber-bright text-wood-950 font-bold text-xs px-3.5 py-2 rounded-lg shadow-lg flex items-center space-x-1.5 transition-all">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Change Banner Image</span>
+                </button>
+                <div class="bg-wood-950/80 backdrop-blur-md px-3 py-2 rounded-lg border border-wood-700/50 text-[11px] text-wood-300 hidden sm:block">
+                    <i class="fa-solid fa-award text-amber-accent mr-1"></i> Original Handcrafted Creations
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Action Bar Below Banner -->
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-wood-700/80 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-2 max-w-3xl">
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block px-3 py-1 rounded-full bg-amber-accent/20 border border-amber-accent/40 text-amber-accent text-xs font-semibold tracking-wider uppercase">
+                        Handcrafted Woodworks
+                    </span>
+                    <span class="text-xs text-wood-400 font-serif">Estd. 2024</span>
+                </div>
+                <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-wood-50">
+                    Timeless Quality, <span class="wood-gradient-text">Custom Built</span>
+                </h1>
+                <p class="text-xs sm:text-sm text-wood-200/90 leading-relaxed">
+                    Explore our handcrafted end-grain boards, seasonal wall art, scale models, and custom furniture built from sustainable hardwoods.
+                </p>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                <a href="#shop" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-sm shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
+                    <span>Browse Catalog</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button onclick="openImageManagerModal('add')" class="admin-element hidden px-6 py-3 rounded-xl bg-wood-900 border border-amber-accent/60 text-amber-bright font-semibold text-sm hover:bg-amber-accent hover:text-wood-950 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>Add New Photo & Item</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchant Setup Guide Section (Admin Only) -->
+    <section id="howTo" class="admin-element hidden py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-amber-accent/30 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-wood-800 pb-4 gap-4">
+                <div>
+                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase"><i class="fa-solid fa-circle-info mr-1"></i> Image & Store Backup Guide</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wood-50 mt-1">How to Manage Products & Backup Store Data</h2>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="exportCatalogData()" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-amber-accent font-bold text-xs border border-wood-700 transition-all flex items-center space-x-1.5 shadow-md">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Export Store Backup</span>
+                    </button>
+                    <button onclick="openImageManagerModal('banner')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs shadow-lg hover:brightness-110 transition-all flex items-center space-x-1.5">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Change Banner</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Method 1 -->
+                <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">1</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Change Top Hero Banner</h3>
+                    <p class="text-xs text-wood-300 leading-relaxed">
+                        Click <strong>"Change Banner Image"</strong> on the banner photo or select the <strong>"Hero Banner"</strong> tab in the manager to upload a new banner image from your device.
+                    </p>
+                </div>
+
+                <!-- Method 2 -->
+                <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">2</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Add Brand New Items</h3>
+                    <p class="text-xs text-wood-300 leading-relaxed">
+                        Click <strong>"+ Add Photo / Product"</strong> to add completely new craft items with title, price, wood species, description, and your custom uploaded photo.
+                    </p>
+                </div>
+
+                <!-- Method 3 -->
+                <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">3</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Transfer Data Across Domains</h3>
+                    <p class="text-xs text-wood-300 leading-relaxed">
+                        When changing Netlify domain names, use <strong>"Export Store Backup"</strong> to download your product database, then click <strong>"Import Store Backup"</strong> on your new URL!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Shop Section -->
+    <section id="shop" class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Product Shop Header Actions -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-wood-800 pb-6">
+            <div>
+                <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Artisan Woodcraft Catalog</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50 mt-1">Featured Wooden Products</h2>
+            </div>
+            <div class="admin-element hidden flex items-center space-x-3">
+                <button onclick="exportCatalogData()" title="Download a backup file of your store items" class="px-3 py-2 bg-wood-900 border border-wood-700 hover:border-amber-accent text-wood-300 hover:text-amber-accent rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-download"></i> Export Backup
+                </button>
+                <button onclick="resetAllImages()" class="px-3 py-2 bg-wood-900 border border-wood-700 hover:border-red-400 text-wood-400 hover:text-red-300 rounded-lg text-xs font-semibold transition-all">
+                    <i class="fa-solid fa-rotate-left mr-1"></i> Reset Catalog
+                </button>
+                <button onclick="openImageManagerModal('add')" class="px-4 py-2 bg-amber-accent text-wood-950 font-bold hover:brightness-110 rounded-lg text-xs transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>+ Add New Product</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-8" id="categoryFilters">
+            <button onclick="filterProducts('all')" data-cat="all" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-amber-accent text-wood-950 shadow-md">
+                All Collections
+            </button>
+            <button onclick="filterProducts('Kitchen & Dining')" data-cat="Kitchen & Dining" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
+                Kitchen & Dining
+            </button>
+            <button onclick="filterProducts('Furniture')" data-cat="Furniture" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
+                Furniture
+            </button>
+            <button onclick="filterProducts('Games')" data-cat="Games" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
+                Games
+            </button>
+            <button onclick="filterProducts('Seasonal Decor')" data-cat="Seasonal Decor" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
+                Seasonal Decor
+            </button>
+            <button onclick="filterProducts('Nautical & Planters')" data-cat="Nautical & Planters" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
+                Nautical & Planters
+            </button>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JS Injection -->
+        </div>
+
+        <!-- Empty Results -->
+        <div id="noResults" class="hidden text-center py-16 glass-panel rounded-2xl space-y-3">
+            <i class="fa-solid fa-box-open text-4xl text-wood-500"></i>
+            <h3 class="text-xl font-serif font-bold text-wood-200">No products found</h3>
+            <p class="text-wood-400 text-sm">Try resetting your filters or search keywords, or add a new item.</p>
+            <button onclick="openImageManagerModal('add')" class="px-5 py-2.5 text-xs bg-amber-accent text-wood-950 font-bold rounded-lg hover:brightness-110">
+                + Add Your First Custom Product
+            </button>
+        </div>
+    </section>
+
+    <!-- Custom Commission Section -->
+    <section id="commission" class="py-14 bg-gradient-to-b from-wood-900/60 via-wood-950 to-wood-900/40 border-y border-wood-800/80 my-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Custom Woodworking</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50">Request a Custom Creation</h2>
+                    <p class="text-wood-300 text-sm leading-relaxed">
+                        Have a unique size, specific grain preference, or custom engraving in mind? We craft made-to-order furniture, engraved wall mounts, and corporate gifts.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-check text-amber-accent mt-1"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-wood-200">Precision Laser Engraving</h4>
+                                <p class="text-xs text-wood-400">Personalize with family names, dates, or custom logos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-check text-amber-accent mt-1"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-wood-200">Choice of Fine Hardwoods</h4>
+                                <p class="text-xs text-wood-400">Walnut, White Oak, Cherry, Hard Maple & Teak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-6 sm:p-8 rounded-2xl shadow-xl">
+                        <form name="custom-commission" method="POST" action="/?success=true" data-netlify="true" class="space-y-4">
+    <input type="hidden" name="form-name" value="custom-commission" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-medium text-wood-300 mb-1">Your Name</label>
+            <input type="text" name="name" required placeholder="Jane Doe" class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+        </div>
+        <div>
+            <label class="block text-xs font-medium text-wood-300 mb-1">Email Address</label>
+            <input type="email" name="email" required placeholder="jane@example.com" class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+        </div>
+    </div>
+    <div>
+        <label class="block text-xs font-medium text-wood-300 mb-1">Project Details & Requirements</label>
+        <textarea name="project_details" rows="3" required placeholder="Describe what you would like crafted (e.g., 6ft Walnut Dining Table with live edge)..." class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
+    </div>
+    <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-sm rounded-lg shadow-lg hover:brightness-110 transition-all">
+        Send Commission Inquiry
+    </button>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-wood-950 border-t border-wood-800 text-wood-400 mt-auto py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-amber-accent text-wood-950 font-serif font-bold flex items-center justify-center text-sm">AJR</div>
+                <span class="font-serif text-lg font-bold text-wood-100">AJR WOODCRAFT</span>
+            </div>
+            <p class="text-xs text-wood-500">&copy; 2026 AJR Woodcraft. Handcrafted Quality Guaranteed.</p>
+            <div class="admin-element hidden flex space-x-4 text-xs text-wood-400">
+                <button onclick="scrollToGuide()" class="hover:text-amber-accent transition-colors">Setup Guide</button>
+                <button onclick="openImageManagerModal('banner')" class="hover:text-amber-accent transition-colors">Change Banner</button>
+                <button onclick="openImageManagerModal('add')" class="hover:text-amber-accent transition-colors">+ Add Products</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIVE IMAGE & STORE MANAGER MODAL -->
+    <div id="imageManagerModal" class="fixed inset-0 z-50 invisible bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-all">
+        <div class="glass-panel border border-amber-accent/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="p-5 border-b border-wood-800 bg-wood-900 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-amber-accent/20 text-amber-bright flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-lg font-bold text-wood-100">Store Photo & Product Manager</h3>
+                        <p class="text-xs text-wood-400">Add custom photos, update banner, or edit products</p>
+                    </div>
+                </div>
+                <button onclick="closeImageManagerModal()" class="text-wood-400 hover:text-wood-100 p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Manager Mode Switcher Tabs -->
+            <div class="flex border-b border-wood-800 bg-wood-950 px-4 sm:px-6 overflow-x-auto">
+                <button id="tabBannerBtn" onclick="switchManagerTab('banner')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Hero Banner</span>
+                </button>
+                <button id="tabAddBtn" onclick="switchManagerTab('add')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>+ Add New Product</span>
+                </button>
+                <button id="tabUpdateBtn" onclick="switchManagerTab('update')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Edit Product Details & Photo</span>
+                </button>
+                <button id="tabBackupBtn" onclick="switchManagerTab('backup')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span>Backup / Transfer</span>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-1">
+
+                <!-- TAB 1: HERO BANNER MANAGEMENT -->
+                <div id="tabBannerContent" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Current Hero Banner Preview</label>
+                        <div class="rounded-xl overflow-hidden border border-wood-700 bg-wood-950 p-2">
+                            <img id="adminBannerPreview" src="" alt="Banner Preview" class="w-full h-36 object-contain rounded-lg bg-wood-900">
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Upload New Banner Image</label>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Banner Local File Upload -->
+                            <div class="p-4 bg-wood-900/60 rounded-xl border border-dashed border-wood-600 hover:border-amber-accent transition-colors flex flex-col items-center justify-center text-center space-y-2">
+                                <i class="fa-solid fa-cloud-arrow-up text-2xl text-amber-accent"></i>
+                                <span class="text-xs font-bold text-wood-200">Upload Banner File</span>
+                                <span class="text-[10px] text-wood-400">JPG, PNG, WEBP (Wide aspect ratio recommended)</span>
+                                <input type="file" id="bannerFileInput" accept="image/*" onchange="handleBannerFileUpload(event)" class="hidden">
+                                <button type="button" onclick="document.getElementById('bannerFileInput').click()" class="px-3.5 py-1.5 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-wood-100 border border-wood-600">
+                                    Choose Banner Photo
+                                </button>
+                            </div>
+
+                            <!-- Banner Web URL Input -->
+                            <div class="p-4 bg-wood-900/60 rounded-xl border border-wood-700 flex flex-col justify-between space-y-2">
+                                <div>
+                                    <span class="text-xs font-bold text-wood-200 block mb-1">Or Paste Web Image Link</span>
+                                    <input type="url" id="bannerUrlInput" placeholder="https://..." class="w-full bg-wood-950 text-wood-100 text-xs rounded border border-wood-700 p-2 focus:outline-none focus:border-amber-accent">
+                                </div>
+                                <button type="button" onclick="applyBannerUrl()" class="w-full py-1.5 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-amber-accent border border-wood-600">
+                                    Apply Banner Link
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: ADD BRAND NEW PRODUCT -->
+                <div id="tabAddContent" class="space-y-4">
+                    <form onsubmit="handleAddNewProduct(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *</label>
+                                <input type="text" id="newTitle" required placeholder="e.g. Cedar Coaster Set" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *</label>
+                                <select id="newCategory" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                                    <option value="Kitchen & Dining">Kitchen & Dining</option>
+                                    <option value="Furniture">Furniture</option>
+                                    <option value="Games">Games</option>
+                                    <option value="Seasonal Decor" selected>Seasonal Decor</option>
+                                    <option value="Nautical & Planters">Nautical & Planters</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *</label>
+                                <input type="number" id="newPrice" step="0.01" required placeholder="45.00" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material</label>
+                                <input type="text" id="newWoodType" placeholder="e.g. Red Cedar & Walnut" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description</label>
+                            <textarea id="newDesc" rows="2" placeholder="Brief details about craft, finish, and dimensions..." class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
+                        </div>
+
+                        <!-- Image Attachment Section -->
+                        <div class="space-y-2 border-t border-wood-800 pt-3">
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Product Photo *</label>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <!-- Local File Upload -->
+                                <div class="p-3 bg-wood-900/60 rounded-xl border border-dashed border-wood-600 hover:border-amber-accent transition-colors text-center space-y-1.5 flex flex-col items-center justify-center">
+                                    <i class="fa-solid fa-cloud-arrow-up text-amber-accent text-xl"></i>
+                                    <span class="text-xs font-bold text-wood-200">Upload Image File</span>
+                                    <input type="file" id="newFileInput" accept="image/*" onchange="handleNewProductFile(event)" class="hidden">
+                                    <button type="button" onclick="document.getElementById('newFileInput').click()" class="px-3 py-1 rounded bg-wood-800 hover:bg-wood-700 text-xs text-wood-100 border border-wood-600">
+                                        Choose Local Photo
+                                    </button>
+                                </div>
+
+                                <!-- Paste Image URL -->
+                                <div class="p-3 bg-wood-900/60 rounded-xl border border-wood-700 flex flex-col justify-between space-y-2">
+                                    <div>
+                                        <span class="text-xs font-bold text-wood-200 block">Or Paste Web Image URL</span>
+                                        <input type="url" id="newUrlInput" oninput="handleNewUrlInput(this.value)" placeholder="https://..." class="w-full bg-wood-950 text-wood-100 text-xs rounded border border-wood-700 p-1.5 mt-1 focus:outline-none focus:border-amber-accent">
+                                    </div>
+                                    <span class="text-[10px] text-wood-400">Direct HTTP/HTTPS link</span>
+                                </div>
+                            </div>
+
+                            <!-- Preview of Attached Image -->
+                            <div id="newImagePreviewContainer" class="hidden flex items-center space-x-3 p-3 bg-wood-950 rounded-xl border border-wood-800">
+                                <img id="newImagePreview" src="" alt="Preview" class="w-16 h-16 object-cover rounded-lg bg-wood-900 border border-wood-700">
+                                <div class="text-xs">
+                                    <span class="text-amber-accent font-bold block">Photo Attached</span>
+                                    <span id="newImageFilename" class="text-wood-400 block truncate max-w-[250px]">Image ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus-circle"></i>
+                            <span>Add Product to Store Catalog</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- TAB 3: EDIT EXISTING ITEM DETAILS & PHOTO -->
+                <div id="tabUpdateContent" class="hidden space-y-5">
+                    <!-- Select Product to Edit -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Select Product to Edit</label>
+                        <select id="adminProductSelect" onchange="populateAdminForm()" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            <!-- Options filled via JS -->
+                        </select>
+                    </div>
+
+                    <form onsubmit="handleSaveEditedProduct(event)" class="space-y-4 pt-2 border-t border-wood-800">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *</label>
+                                <input type="text" id="editTitle" required class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *</label>
+                                <select id="editCategory" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                                    <option value="Kitchen & Dining">Kitchen & Dining</option>
+                                    <option value="Furniture">Furniture</option>
+                                    <option value="Games">Games</option>
+                                    <option value="Seasonal Decor">Seasonal Decor</option>
+                                    <option value="Nautical & Planters">Nautical & Planters</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *</label>
+                                <input type="number" id="editPrice" step="0.01" required class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material</label>
+                                <input type="text" id="editWoodType" placeholder="e.g. Walnut & Maple" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description</label>
+                            <textarea id="editDesc" rows="2" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
+                        </div>
+
+                        <!-- Current Image & Replacement Section -->
+                        <div class="space-y-3 pt-2 border-t border-wood-800">
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Product Photo</label>
+                            
+                            <div class="p-3 rounded-xl bg-wood-950/80 border border-wood-800 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img id="adminCurrentPreview" src="" alt="Preview" class="w-14 h-14 object-cover rounded-lg bg-wood-900 border border-wood-700">
+                                    <div>
+                                        <span class="text-[11px] text-wood-400 block">Current Photo</span>
+                                        <span id="adminSelectedTitle" class="font-serif font-bold text-wood-100 text-xs truncate max-w-[200px] block">Product Name</span>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="deleteCurrentProduct()" class="px-2.5 py-1.5 bg-red-950/80 hover:bg-red-900 text-red-300 border border-red-800/80 rounded-lg text-xs transition-colors flex items-center space-x-1">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span class="hidden sm:inline">Delete Product</span>
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <!-- File Upload -->
+                                <div class="p-3 bg-wood-900/60 rounded-xl border border-dashed border-wood-600 hover:border-amber-accent transition-colors flex flex-col items-center justify-center text-center space-y-1.5">
+                                    <i class="fa-solid fa-cloud-arrow-up text-lg text-amber-accent"></i>
+                                    <span class="text-xs font-bold text-wood-200">Replace Photo File</span>
+                                    <input type="file" id="adminFileInput" accept="image/*" onchange="handleAdminFileUpload(event)" class="hidden">
+                                    <button type="button" onclick="document.getElementById('adminFileInput').click()" class="px-3 py-1 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-wood-100 border border-wood-600">
+                                        Choose File
+                                    </button>
+                                </div>
+
+                                <!-- URL Input -->
+                                <div class="p-3 bg-wood-900/60 rounded-xl border border-wood-700 flex flex-col justify-between space-y-1.5">
+                                    <div>
+                                        <span class="text-xs font-bold text-wood-200 block mb-1">Paste Image Link</span>
+                                        <input type="url" id="adminUrlInput" placeholder="https://..." class="w-full bg-wood-950 text-wood-100 text-xs rounded border border-wood-700 p-1.5 focus:outline-none focus:border-amber-accent">
+                                    </div>
+                                    <button type="button" onclick="applyAdminUrl()" class="w-full py-1 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-amber-accent border border-wood-600">
+                                        Update Photo Link
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Save Product Changes</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- TAB 4: BACKUP & TRANSFER -->
+                <div id="tabBackupContent" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h4 class="font-serif text-base font-bold text-wood-100">Store Data Backup & Domain Migration</h4>
+                        <p class="text-xs text-wood-300 leading-relaxed">
+                            When you change site domain names on Netlify (e.g. from <code>venerable-phoenix-f9557a.netlify.app</code> to <code>woodcraft.netlify.app</code>), browser storage is isolated to each domain name. Use these tools to download and restore your store catalog anytime!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Export -->
+                        <div class="p-5 bg-wood-900/60 rounded-xl border border-wood-700 space-y-3 flex flex-col justify-between">
+                            <div>
+                                <i class="fa-solid fa-file-export text-2xl text-amber-accent mb-2"></i>
+                                <h5 class="text-xs font-bold text-wood-100 uppercase tracking-wider">1. Export Catalog File</h5>
+                                <p class="text-[11px] text-wood-400 mt-1">Download a <code>.json</code> backup file of all your products, prices, descriptions, and uploaded images.</p>
+                            </div>
+                            <button onclick="exportCatalogData()" class="w-full py-2 bg-wood-800 hover:bg-wood-700 text-amber-accent border border-wood-600 font-bold text-xs rounded-lg transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-download"></i>
+                                <span>Export Store Backup</span>
+                            </button>
+                        </div>
+
+                        <!-- Import -->
+                        <div class="p-5 bg-wood-900/60 rounded-xl border border-wood-700 space-y-3 flex flex-col justify-between">
+                            <div>
+                                <i class="fa-solid fa-file-import text-2xl text-amber-accent mb-2"></i>
+                                <h5 class="text-xs font-bold text-wood-100 uppercase tracking-wider">2. Import Catalog File</h5>
+                                <p class="text-[11px] text-wood-400 mt-1">Restore your uploaded photos and product edits on a new Netlify URL or device.</p>
+                            </div>
+                            <input type="file" id="importFileInput" accept=".json" onchange="importCatalogData(event)" class="hidden">
+                            <button onclick="document.getElementById('importFileInput').click()" class="w-full py-2 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs rounded-lg hover:brightness-110 transition-all flex items-center justify-center space-x-1.5">
+                                <i class="fa-solid fa-upload"></i>
+                                <span>Import Store Backup</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 border-t border-wood-800 bg-wood-900 flex justify-between items-center">
+                <span class="text-xs text-wood-400"><i class="fa-solid fa-floppy-disk text-amber-accent mr-1"></i> Saved automatically to browser memory</span>
+                <button onclick="closeImageManagerModal()" class="px-5 py-2 bg-amber-accent text-wood-950 font-bold rounded-lg text-xs hover:brightness-110">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 invisible bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel border border-wood-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeQuickView()" class="absolute top-3 right-3 text-wood-400 hover:text-wood-100 bg-wood-900 rounded-full w-8 h-8 flex items-center justify-center z-10 border border-wood-700">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quickViewContent" class="p-6">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CART SIDEBAR MODAL -->
+    <div id="cartModal" class="fixed inset-0 z-50 invisible transition-opacity duration-300 bg-black/75 backdrop-blur-sm">
+        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-wood-950 border-l border-wood-800 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" id="cartSidebar">
+            <div class="p-4 border-b border-wood-800 flex items-center justify-between bg-wood-900">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping text-amber-accent"></i>
+                    <h3 class="font-serif text-lg font-bold text-wood-100">Your Craft Cart</h3>
+                </div>
+                <button onclick="closeCartModal()" class="text-wood-400 hover:text-wood-100 p-2">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-4">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="p-4 border-t border-wood-800 bg-wood-900 space-y-3">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-wood-300">Subtotal:</span>
+                    <span id="cartSubtotal" class="font-bold text-amber-accent text-base">$0.00</span>
+                </div>
+                <button onclick="checkoutCart()" class="w-full py-3 bg-amber-accent text-wood-950 font-bold rounded-lg hover:brightness-110 transition-all text-sm flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Checkout Order</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-amber-accent/40 text-wood-100 px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-amber-accent text-lg"></i>
+        <span id="toastMsg" class="text-sm font-medium">Notification message</span>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        let isAdmin = false;
+        let products = [];
+        let cart = [];
+        let currentCategory = 'all';
+        let attachedNewImage = '';
+        let currentBannerImage = '';
+
+        const initialProducts = [
+            {
+                id: 'prod-seasonal-1',
+                name: "Witch's Hat Tabletop Wooden Silhouette",
+                category: "Seasonal Decor",
+                price: 34.00,
+                rating: 5.0,
+                reviews: 24,
+                image: "input_file_0.png",
+                description: "Handcrafted wooden witch hat tabletop decor featuring a crescent moon inlay and rustic orange plaid ribbon trim on a sturdy pedestal base.",
+                woodType: "Pine & Birch"
+            },
+            {
+                id: 'prod-seasonal-2',
+                name: "Halloween Tealight Holder Trio (RIP, Pumpkin, Black Cat)",
+                category: "Seasonal Decor",
+                price: 48.00,
+                rating: 4.9,
+                reviews: 38,
+                image: "input_file_1.png",
+                description: "Set of 3 rustic wooden candle holders featuring gravestone RIP, jack-o'-lantern, and black cat designs. Comes complete with battery-operated LED tea lights.",
+                woodType: "Stained Cedar & Oak"
+            },
+            {
+                id: 'prod-seasonal-3',
+                name: "Laser Engraved Black Cat & Pumpkin Wood Wall Art",
+                category: "Seasonal Decor",
+                price: 65.00,
+                rating: 5.0,
+                reviews: 42,
+                image: "input_file_2.png",
+                description: "Extremely detailed laser-etched black wood canvas plaque showing a feline atop a carved pumpkin surrounded by falling autumn maple leaves.",
+                woodType: "Hard Maple Panel"
+            },
+            {
+                id: 'prod-seasonal-4',
+                name: "Black Cat on Crescent Moon Live Edge Wood Plaque",
+                category: "Seasonal Decor",
+                price: 42.00,
+                rating: 4.9,
+                reviews: 19,
+                image: "input_file_3.png",
+                description: "Natural live-edge bark wood round stained in vibrant harvest orange, topped with a intricate laser-cut black cat and ornate crescent moon silhouette.",
+                woodType: "Natural Bark Slab"
+            }
+        ];
+
+        function checkAdminStatus() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const adminParam = urlParams.get('admin');
+
+            if (adminParam === 'true' || adminParam === '1') {
+                isAdmin = true;
+                localStorage.setItem('ajr_admin_active', 'true');
+            } else if (adminParam === 'false' || adminParam === '0') {
+                isAdmin = false;
+                localStorage.removeItem('ajr_admin_active');
+            } else {
+                isAdmin = localStorage.getItem('ajr_admin_active') === 'true';
+            }
+
+            applyAdminVisibility();
+        }
+
+        function applyAdminVisibility() {
+            if (isAdmin) {
+                document.querySelectorAll('.admin-element').forEach(el => el.classList.remove('hidden'));
+            } else {
+                document.querySelectorAll('.admin-element').forEach(el => el.classList.add('hidden'));
+            }
+        }
+
+        function exitAdminMode() {
+            isAdmin = false;
+            localStorage.removeItem('ajr_admin_active');
+            
+            const url = new URL(window.location.href);
+            url.searchParams.delete('admin');
+            window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+            
+            applyAdminVisibility();
+            showToast("Exited Admin Mode - Showing Customer View");
+        }
+
+        // Keyboard Shortcut: Ctrl + Shift + A toggles Admin Mode
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                if (isAdmin) {
+                    exitAdminMode();
+                } else {
+                    isAdmin = true;
+                    localStorage.setItem('ajr_admin_active', 'true');
+                    applyAdminVisibility();
+                    showToast("Admin Mode Activated!");
+                }
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+    checkAdminStatus();
+
+    // Add this check to handle the success toast when Netlify redirects back
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        showToast("Custom project inquiry sent successfully!");
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    loadBannerFromStorage();
+    loadProductsFromStorage();
+    renderProducts(products);
+    populateAdminDropdown();
+    updateCartUI();
+});
+
+        // Banner Image Management
+        function loadBannerFromStorage() {
+            const savedBanner = localStorage.getItem('ajr_woodcraft_banner');
+            const heroBannerImg = document.getElementById('heroBannerImg');
+            const adminBannerPreview = document.getElementById('adminBannerPreview');
+            
+            if (savedBanner) {
+                currentBannerImage = savedBanner;
+            } else if (heroBannerImg) {
+                currentBannerImage = heroBannerImg.getAttribute('src');
+            }
+            
+            if (heroBannerImg && currentBannerImage) heroBannerImg.src = currentBannerImage;
+            if (adminBannerPreview && currentBannerImage) adminBannerPreview.src = currentBannerImage;
+        }
+
+        function saveBannerToStorage(dataUrl) {
+            currentBannerImage = dataUrl;
+            try {
+                localStorage.setItem('ajr_woodcraft_banner', dataUrl);
+            } catch(e) {
+                showToast("Storage quota exceeded! Try using smaller images.", true);
+            }
+            const heroBannerImg = document.getElementById('heroBannerImg');
+            const adminBannerPreview = document.getElementById('adminBannerPreview');
+            if (heroBannerImg) heroBannerImg.src = dataUrl;
+            if (adminBannerPreview) adminBannerPreview.src = dataUrl;
+        }
+
+        function handleBannerFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            compressAndProcessImage(file, 1200, 0.8, function(compressedDataUrl) {
+                saveBannerToStorage(compressedDataUrl);
+                showToast("Hero Banner updated successfully!");
+            });
+        }
+
+        function applyBannerUrl() {
+            const url = document.getElementById('bannerUrlInput').value.trim();
+            if (!url) return;
+            saveBannerToStorage(url);
+            showToast("Hero Banner URL applied!");
+        }
+
+        // Image Compression helper
+        function compressAndProcessImage(file, maxDimension, quality, callback) {
+            const reader = new FileReader();
+            reader.onerror = function() {
+                showToast("Failed to read image file.", true);
+            };
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onerror = function() {
+                    showToast("Invalid or unsupported image file.", true);
+                };
+                img.onload = function() {
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxDimension || height > maxDimension) {
+                        if (width > height) {
+                            height = Math.round((height * maxDimension) / width);
+                            width = maxDimension;
+                        } else {
+                            width = Math.round((width * maxDimension) / height);
+                            height = maxDimension;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    callback(compressedDataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function loadProductsFromStorage() {
+            const saved = localStorage.getItem('ajr_woodcraft_products');
+            if (saved) {
+                try {
+                    products = JSON.parse(saved);
+                } catch(e) {
+                    products = [...initialProducts];
+                }
+            } else {
+                products = [...initialProducts];
+            }
+        }
+
+        function saveProductsToStorage() {
+            try {
+                localStorage.setItem('ajr_woodcraft_products', JSON.stringify(products));
+            } catch(e) {
+                showToast("Browser storage full. Try using compressed images or URLs.", true);
+            }
+        }
+
+        function resetAllImages() {
+            products = JSON.parse(JSON.stringify(initialProducts));
+            localStorage.removeItem('ajr_woodcraft_products');
+            localStorage.removeItem('ajr_woodcraft_banner');
+            loadBannerFromStorage();
+            applyCombinedFilter();
+            populateAdminDropdown();
+            showToast("Restored default store catalog!");
+        }
+
+        // EXPORT & IMPORT BACKUP LOGIC
+        function exportCatalogData() {
+            const backup = {
+                banner: localStorage.getItem('ajr_woodcraft_banner') || currentBannerImage,
+                products: products,
+                exportDate: new Date().toISOString()
+            };
+
+            const jsonStr = JSON.stringify(backup, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ajr_woodcraft_store_backup_${new Date().toISOString().slice(0,10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast("Exported store catalog backup file!");
+        }
+
+        function importCatalogData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (imported.products && Array.isArray(imported.products)) {
+                        products = imported.products;
+                        saveProductsToStorage();
+                    }
+                    if (imported.banner) {
+                        saveBannerToStorage(imported.banner);
+                    }
+                    applyCombinedFilter();
+                    populateAdminDropdown();
+                    showToast("Successfully imported store catalog!");
+                    closeImageManagerModal();
+                } catch(err) {
+                    showToast("Invalid backup file format!", true);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function handleImgError(imgEl, productId) {
+            const p = products.find(prod => prod.id === productId);
+            const title = p ? p.name : 'Handcrafted Item';
+            imgEl.src = 'https://placehold.co/600x450/23180E/F5B027?text=' + encodeURIComponent(title);
+        }
+
+        // Render Product Cards Grid
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            const noRes = document.getElementById('noResults');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                noRes.classList.remove('hidden');
+                return;
+            } else {
+                noRes.classList.add('hidden');
+            }
+
+            grid.innerHTML = items.map(p => `
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3] bg-wood-900">
+                        <img id="img-${p.id}" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}" 
+                             onerror="handleImgError(this, '${p.id}')"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-wood-950/85 backdrop-blur-md text-amber-accent text-[11px] font-bold px-2.5 py-1 rounded-md border border-amber-accent/30">
+                            ${escapeHtml(p.category)}
+                        </span>
+
+                        <div class="absolute bottom-3 right-3 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            ${isAdmin ? `
+                            <button onclick="quickChangeImage('${p.id}')" title="Edit details or photo for this item" class="bg-amber-accent text-wood-950 p-2 rounded-lg font-bold text-xs shadow-md hover:brightness-110">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>` : ''}
+                            <button onclick="openQuickView('${p.id}')" title="Quick view details" class="bg-wood-950/90 text-wood-100 hover:text-amber-accent p-2 rounded-lg border border-wood-700 text-xs">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-wood-400 mb-1">
+                                <span><i class="fa-solid fa-tree text-amber-accent/80 mr-1"></i> ${escapeHtml(p.woodType || 'Hardwood')}</span>
+                                <div class="flex items-center text-amber-bright text-[11px]">
+                                    <i class="fa-solid fa-star mr-1"></i>
+                                    <span class="font-bold text-wood-200">${p.rating || '5.0'}</span>
+                                    <span class="text-wood-500 ml-1">(${p.reviews || 'New'})</span>
+                                </div>
+                            </div>
+                            <h3 class="font-serif text-base font-bold text-wood-100 group-hover:text-amber-accent transition-colors line-clamp-1">${escapeHtml(p.name)}</h3>
+                            <p class="text-xs text-wood-400 mt-1 line-clamp-2">${escapeHtml(p.description || 'Handcrafted wooden creation.')}</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-wood-800/80 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-wood-500 block uppercase font-bold">Price</span>
+                                <span class="font-serif text-lg font-bold text-amber-accent">$${parseFloat(p.price).toFixed(2)}</span>
+                            </div>
+                            <button onclick="addToCart('${p.id}')" class="px-3 py-2 rounded-lg bg-wood-800 hover:bg-amber-accent hover:text-wood-950 text-amber-accent border border-wood-700 hover:border-amber-accent font-semibold text-xs transition-all flex items-center space-x-1.5">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtering
+        function filterProducts(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === category) {
+                    btn.className = "filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-amber-accent text-wood-950 shadow-md";
+                } else {
+                    btn.className = "filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all";
+                }
+            });
+            applyCombinedFilter();
+        }
+
+        function handleSearch() {
+            applyCombinedFilter();
+        }
+
+        function applyCombinedFilter() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            let filtered = products;
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            if (query) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(query) || 
+                    (p.description && p.description.toLowerCase().includes(query)) ||
+                    (p.woodType && p.woodType.toLowerCase().includes(query))
+                );
+            }
+
+            renderProducts(filtered);
+        }
+
+        // TAB SWITCHING IN MODAL
+        function switchManagerTab(tab) {
+            const bannerBtn = document.getElementById('tabBannerBtn');
+            const addBtn = document.getElementById('tabAddBtn');
+            const updateBtn = document.getElementById('tabUpdateBtn');
+            const backupBtn = document.getElementById('tabBackupBtn');
+
+            const bannerContent = document.getElementById('tabBannerContent');
+            const addContent = document.getElementById('tabAddContent');
+            const updateContent = document.getElementById('tabUpdateContent');
+            const backupContent = document.getElementById('tabBackupContent');
+
+            // Reset tab styles
+            [bannerBtn, addBtn, updateBtn, backupBtn].forEach(btn => {
+                if (btn) btn.className = "py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap";
+            });
+
+            // Hide contents
+            bannerContent.classList.add('hidden');
+            addContent.classList.add('hidden');
+            updateContent.classList.add('hidden');
+            backupContent.classList.add('hidden');
+
+            if (tab === 'banner') {
+                bannerBtn.className = "py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap";
+                bannerContent.classList.remove('hidden');
+                loadBannerFromStorage();
+            } else if (tab === 'add') {
+                addBtn.className = "py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap";
+                addContent.classList.remove('hidden');
+            } else if (tab === 'update') {
+                updateBtn.className = "py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap";
+                updateContent.classList.remove('hidden');
+                populateAdminDropdown();
+            } else if (tab === 'backup') {
+                backupBtn.className = "py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap";
+                backupContent.classList.remove('hidden');
+            }
+        }
+
+        // ADD NEW PRODUCT LOGIC
+        function handleNewProductFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            compressAndProcessImage(file, 800, 0.82, function(compressedDataUrl) {
+                attachedNewImage = compressedDataUrl;
+                displayNewImagePreview(attachedNewImage, file.name);
+                showToast("Photo processed and ready!");
+            });
+        }
+
+        function handleNewUrlInput(url) {
+            if (url.trim()) {
+                attachedNewImage = url.trim();
+                displayNewImagePreview(attachedNewImage, "Web Image URL");
+            }
+        }
+
+        function displayNewImagePreview(src, filename) {
+            const container = document.getElementById('newImagePreviewContainer');
+            const img = document.getElementById('newImagePreview');
+            const label = document.getElementById('newImageFilename');
+            img.src = src;
+            label.textContent = filename;
+            container.classList.remove('hidden');
+        }
+
+        function handleAddNewProduct(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('newTitle').value.trim();
+            const category = document.getElementById('newCategory').value;
+            const price = parseFloat(document.getElementById('newPrice').value);
+            const woodType = document.getElementById('newWoodType').value.trim() || 'Hardwood';
+            const description = document.getElementById('newDesc').value.trim() || 'Handcrafted woodcraft item.';
+
+            if (!attachedNewImage) {
+                showToast("Please select a photo file or paste an image URL first!", true);
+                return;
+            }
+
+            const newProd = {
+                id: 'prod-' + Date.now(),
+                name: title,
+                category: category,
+                price: price,
+                rating: 5.0,
+                reviews: 1,
+                image: attachedNewImage,
+                description: description,
+                woodType: woodType
+            };
+
+            products.unshift(newProd);
+            saveProductsToStorage();
+            applyCombinedFilter();
+            populateAdminDropdown();
+
+            e.target.reset();
+            attachedNewImage = '';
+            document.getElementById('newImagePreviewContainer').classList.add('hidden');
+
+            showToast(`Added "${title}" to your store!`);
+            closeImageManagerModal();
+        }
+
+        // UPDATE / EDIT EXISTING PRODUCT LOGIC
+        function populateAdminDropdown() {
+            const select = document.getElementById('adminProductSelect');
+            if (!select) return;
+
+            if (products.length === 0) {
+                select.innerHTML = '<option value="">No products available</option>';
+                return;
+            }
+
+            select.innerHTML = products.map(p => `
+                <option value="${p.id}">${escapeHtml(p.name)} ($${parseFloat(p.price).toFixed(2)})</option>
+            `).join('');
+            populateAdminForm();
+        }
+
+        function populateAdminForm() {
+            const select = document.getElementById('adminProductSelect');
+            const selectedId = select.value;
+            const product = products.find(p => p.id === selectedId);
+
+            if (product) {
+                document.getElementById('editTitle').value = product.name;
+                document.getElementById('editCategory').value = product.category;
+                document.getElementById('editPrice').value = parseFloat(product.price).toFixed(2);
+                document.getElementById('editWoodType').value = product.woodType || '';
+                document.getElementById('editDesc').value = product.description || '';
+
+                document.getElementById('adminCurrentPreview').src = product.image;
+                document.getElementById('adminSelectedTitle').textContent = product.name;
+                document.getElementById('adminUrlInput').value = product.image;
+            }
+        }
+
+        function handleSaveEditedProduct(e) {
+            e.preventDefault();
+
+            const selectedId = document.getElementById('adminProductSelect').value;
+            const product = products.find(p => p.id === selectedId);
+
+            if (!product) {
+                showToast("No product selected!", true);
+                return;
+            }
+
+            product.name = document.getElementById('editTitle').value.trim();
+            product.category = document.getElementById('editCategory').value;
+            product.price = parseFloat(document.getElementById('editPrice').value);
+            product.woodType = document.getElementById('editWoodType').value.trim() || 'Hardwood';
+            product.description = document.getElementById('editDesc').value.trim();
+
+            saveProductsToStorage();
+            applyCombinedFilter();
+            populateAdminDropdown();
+
+            showToast(`Saved changes for "${product.name}"!`);
+        }
+
+        function handleAdminFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            compressAndProcessImage(file, 800, 0.82, function(compressedDataUrl) {
+                const selectedId = document.getElementById('adminProductSelect').value;
+                const product = products.find(p => p.id === selectedId);
+
+                if (product) {
+                    product.image = compressedDataUrl;
+                    saveProductsToStorage();
+                    document.getElementById('adminCurrentPreview').src = compressedDataUrl;
+                    document.getElementById('adminUrlInput').value = compressedDataUrl;
+
+                    applyCombinedFilter();
+                    showToast(`Updated photo for "${product.name}"!`);
+                }
+            });
+        }
+
+        function applyAdminUrl() {
+            const url = document.getElementById('adminUrlInput').value.trim();
+            if (!url) return;
+
+            const selectedId = document.getElementById('adminProductSelect').value;
+            const product = products.find(p => p.id === selectedId);
+
+            if (product) {
+                product.image = url;
+                saveProductsToStorage();
+                document.getElementById('adminCurrentPreview').src = url;
+
+                applyCombinedFilter();
+                showToast(`Updated photo for "${product.name}"!`);
+            }
+        }
+
+        function deleteCurrentProduct() {
+            const selectedId = document.getElementById('adminProductSelect').value;
+            const idx = products.findIndex(p => p.id === selectedId);
+
+            if (idx > -1) {
+                const name = products[idx].name;
+                products.splice(idx, 1);
+                saveProductsToStorage();
+                applyCombinedFilter();
+                populateAdminDropdown();
+                showToast(`Deleted "${name}"`);
+            }
+        }
+
+        function quickChangeImage(productId) {
+            openImageManagerModal('update');
+            document.getElementById('adminProductSelect').value = productId;
+            populateAdminForm();
+        }
+
+        function openImageManagerModal(defaultTab = 'add') {
+            const modal = document.getElementById('imageManagerModal');
+            modal.classList.remove('invisible');
+            switchManagerTab(defaultTab);
+        }
+
+        function closeImageManagerModal() {
+            document.getElementById('imageManagerModal').classList.add('invisible');
+        }
+
+        function scrollToGuide() {
+            document.getElementById('howTo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Added "${product.name}" to cart`);
+        }
+
+        function updateCartQuantity(productId, change) {
+            const idx = cart.findIndex(p => p.id === productId);
+            if (idx > -1) {
+                cart[idx].quantity += change;
+                if (cart[idx].quantity <= 0) {
+                    cart.splice(idx, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartList = document.getElementById('cartItemsList');
+            const badge = document.getElementById('cartCountBadge');
+            const subtotalEl = document.getElementById('cartSubtotal');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalCost = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            badge.textContent = totalCount;
+            if (totalCount > 0) {
+                badge.classList.remove('scale-0');
+                badge.classList.add('scale-100');
+            } else {
+                badge.classList.remove('scale-100');
+                badge.classList.add('scale-0');
+            }
+
+            subtotalEl.textContent = `$${totalCost.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartList.innerHTML = `
+                    <div class="text-center py-12 text-wood-500 space-y-2">
+                        <i class="fa-solid fa-basket-shopping text-3xl mb-1 text-wood-600"></i>
+                        <p class="text-sm">Your cart is empty.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cartList.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-3 bg-wood-900/80 p-3 rounded-xl border border-wood-800">
+                    <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="w-14 h-14 object-cover rounded-lg bg-wood-950 shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-bold text-wood-100 truncate">${escapeHtml(item.name)}</h4>
+                        <span class="text-xs text-amber-accent font-serif font-semibold">$${item.price.toFixed(2)}</span>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button onclick="updateCartQuantity('${item.id}', -1)" class="w-5 h-5 rounded bg-wood-800 text-wood-300 hover:bg-wood-700 flex items-center justify-center text-xs">-</button>
+                            <span class="text-xs text-wood-200 font-bold">${item.quantity}</span>
+                            <button onclick="updateCartQuantity('${item.id}', 1)" class="w-5 h-5 rounded bg-wood-800 text-wood-300 hover:bg-wood-700 flex items-center justify-center text-xs">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openCartModal() {
+            const modal = document.getElementById('cartModal');
+            const sidebar = document.getElementById('cartSidebar');
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('opacity-100');
+            sidebar.classList.remove('translate-x-full');
+        }
+
+        function closeCartModal() {
+            const modal = document.getElementById('cartModal');
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.add('translate-x-full');
+            setTimeout(() => {
+                modal.classList.add('invisible', 'opacity-0');
+            }, 300);
+        }
+
+        function checkoutCart() {
+            if (cart.length === 0) {
+                showToast("Cart is empty!", true);
+                return;
+            }
+            showToast("Order submitted successfully!");
+            cart = [];
+            updateCartUI();
+            closeCartModal();
+        }
+
+        function openQuickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('quickViewModal');
+            const content = document.getElementById('quickViewContent');
+
+            content.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="rounded-xl overflow-hidden aspect-square bg-wood-900 border border-wood-800">
+                        <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold text-amber-accent uppercase tracking-wider">${escapeHtml(product.category)}</span>
+                        <h3 class="font-serif text-xl font-bold text-wood-100">${escapeHtml(product.name)}</h3>
+                        <p class="text-xs text-wood-300 leading-relaxed">${escapeHtml(product.description || 'Handcrafted custom woodcraft.')}</p>
+                        <div class="text-xs text-wood-400 py-2 border-y border-wood-800">
+                            <strong>Wood Type:</strong> ${escapeHtml(product.woodType || 'Hardwood')}
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="font-serif text-2xl font-bold text-amber-accent">$${parseFloat(product.price).toFixed(2)}</span>
+                            <button onclick="addToCart('${product.id}'); closeQuickView();" class="px-5 py-2.5 bg-amber-accent text-wood-950 font-bold text-xs rounded-lg hover:brightness-110">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('invisible');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('invisible');
+        }
+
+        function handleCommissionSubmit(e) {
+            e.preventDefault();
+            showToast("Custom project inquiry sent!");
+            e.target.reset();
+        }
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.textContent = msg;
+            toastIcon.className = isError 
+                ? "fa-solid fa-circle-exclamation text-red-400 text-lg"
+                : "fa-solid fa-circle-check text-amber-accent text-lg";
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
