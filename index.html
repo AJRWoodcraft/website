@@ -88,6 +88,47 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6E4F31;
         }
+        
+        /* Modal Background Overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Modal Content Box */
+        .modal-content {
+            background-color: #23180E;
+            border: 1px solid rgba(169, 137, 101, 0.4);
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #F4EFE6;
+        }
+
+        /* The Close Button (X) */
+        .close-btn {
+            color: #C8B092;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close-btn:hover {
+            color: #F5B027;
+        }
     </style>
 </head>
 <body class="wood-pattern min-h-screen flex flex-col antialiased">
@@ -334,8 +375,8 @@
 
                 <div class="lg:col-span-7">
                     <div class="glass-panel p-6 sm:p-8 rounded-2xl shadow-xl">
-                        <!-- Netlify Form Integration Fixes -->
-                        <form name="custom-commission" method="POST" data-netlify="true" class="space-y-4">
+                        <!-- Netlify Form Integration with AJAX Handler ID -->
+                        <form name="custom-commission" method="POST" data-netlify="true" id="commissionForm" class="space-y-4">
                             <input type="hidden" name="form-name" value="custom-commission" />
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
@@ -612,6 +653,15 @@
         </div>
     </div>
 
+    <!-- ACKNOWLEDGEMENT MODAL -->
+    <div id="ackModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 class="font-serif text-xl font-bold text-amber-accent mb-2">Thank You!</h3>
+            <p class="text-sm text-wood-200">Your message has been sent successfully. We look forward to connecting with you about your custom woodworking project!</p>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-amber-accent/40 text-wood-100 px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
         <i id="toastIcon" class="fa-solid fa-circle-check text-amber-accent text-lg"></i>
@@ -657,7 +707,7 @@
                 price: 48.00,
                 rating: 4.9,
                 reviews: 28,
-                image: "Halloween_Sconces.png",
+                image: "Wooden_pumpkins.jpg",
                 description: "Set of rustic wooden carved pumpkins with hand-painted seasonal detailing and pillar stems.",
                 woodType: "Stained Hardwood"
             },
@@ -785,6 +835,44 @@
             renderProducts(products);
             populateAdminDropdown();
             updateCartUI();
+
+            // Netlify Form AJAX submission handler & Modal Trigger
+            const commissionForm = document.getElementById('commissionForm');
+            const modal = document.getElementById('ackModal');
+            const closeBtn = document.querySelector('.close-btn');
+
+            if (commissionForm) {
+                commissionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(commissionForm);
+
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(formData).toString()
+                    })
+                    .then(() => {
+                        modal.style.display = 'block';
+                        commissionForm.reset();
+                    })
+                    .catch((error) => {
+                        alert('There was a problem submitting your message. Please try again.');
+                        console.error('Form submission error:', error);
+                    });
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            }
+
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
 
         function loadBannerFromStorage() {
