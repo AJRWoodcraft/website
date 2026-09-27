@@ -863,13 +863,17 @@
             const saved = localStorage.getItem('ajr_woodcraft_products');
             if (saved) {
                 try {
-                    products = JSON.parse(saved);
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        products = parsed;
+                        return;
+                    }
                 } catch(e) {
-                    products = [...initialProducts];
+                    // Fallthrough to initial products
                 }
-            } else {
-                products = [...initialProducts];
             }
+            products = [...initialProducts];
+            saveProductsToStorage();
         }
 
         function saveProductsToStorage() {
