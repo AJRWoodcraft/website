@@ -88,57 +88,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6E4F31;
         }
-        
-        /* Modal Background Overlay */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
-        }
-
-        /* Modal Content Box */
-        .modal-content {
-            background-color: #23180E;
-            border: 1px solid rgba(169, 137, 101, 0.4);
-            margin: 15% auto;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            color: #F4EFE6;
-        }
-
-        /* The Close Button (X) */
-        .close-btn {
-            color: #C8B092;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 20px;
-        }
-
-        .close-btn:hover {
-            color: #F5B027;
-        }
     </style>
 </head>
 <body class="wood-pattern min-h-screen flex flex-col antialiased">
 
     <!-- Top Merchant Bar (Admin Only - Hidden by default) -->
     <div id="topMerchantBar" class="admin-element hidden bg-wood-900 border-b border-wood-800 text-amber-accent/90 text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-2 flex-wrap">
-        <span><i class="fa-solid fa-wrench mr-1"></i> <strong>Store Manager Active:</strong> Upload photos, edit prices/descriptions, or add products anytime.</span>
-        <button onclick="scrollToGuide()" class="underline text-amber-bright font-bold hover:text-white transition-colors ml-1">View Setup Guide</button>
+        <span><i class="fa-solid fa-wrench mr-1"></i> <strong>Store Manager Active:</strong> Upload photos, edit prices/descriptions, or add products anytime.[cite: 2]</span>
+        <button onclick="scrollToGuide()" class="underline text-amber-bright font-bold hover:text-white transition-colors ml-1">View Setup Guide[cite: 2]</button>
         <button onclick="exitAdminMode()" class="ml-2 px-2.5 py-1 rounded bg-wood-800 hover:bg-wood-700 text-amber-bright hover:text-white font-bold text-[11px] border border-wood-700 transition-colors flex items-center gap-1 shadow-sm">
-            <i class="fa-solid fa-eye-slash"></i> Exit Admin Mode
+            <i class="fa-solid fa-eye-slash"></i> Exit Admin Mode[cite: 2]
         </button>
     </div>
 
@@ -152,17 +111,17 @@
                         AJR
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-serif text-xl font-bold tracking-wider text-wood-100 group-hover:text-amber-accent transition-colors">AJR WOODCRAFT</span>
-                        <span class="text-[10px] tracking-widest text-wood-400 font-sans uppercase">Handcrafted Woodware • Est. 2024</span>
+                        <span class="font-serif text-xl font-bold tracking-wider text-wood-100 group-hover:text-amber-accent transition-colors">AJR WOODCRAFT[cite: 2]</span>
+                        <span class="text-[10px] tracking-widest text-wood-400 font-sans uppercase">Handcrafted Woodware • Est. 2024[cite: 2]</span>
                     </div>
                 </a>
 
                 <!-- Nav Links -->
                 <nav class="hidden md:flex space-x-8 text-sm font-medium text-wood-200">
-                    <a href="#hero" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Home</a>
-                    <a href="#shop" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Shop Collections</a>
-                    <a href="#howTo" class="admin-element hidden hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent text-amber-bright font-bold"><i class="fa-solid fa-camera mr-1"></i> Image Instructions</a>
-                    <a href="#commission" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Custom Order</a>
+                    <a href="#hero" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Home[cite: 2]</a>
+                    <a href="#shop" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Shop Collections[cite: 2]</a>
+                    <a href="#howTo" class="admin-element hidden hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent text-amber-bright font-bold"><i class="fa-solid fa-camera mr-1"></i> Image Instructions[cite: 2]</a>
+                    <a href="#commission" class="hover:text-amber-accent transition-colors py-1 border-b-2 border-transparent hover:border-amber-accent">Custom Order[cite: 2]</a>
                 </nav>
 
                 <!-- Actions -->
@@ -176,13 +135,13 @@
                     <!-- Manage Store / Image Admin Trigger (Admin Only - Hidden by default) -->
                     <button onclick="openImageManagerModal('add')" class="admin-element hidden px-3.5 py-2 rounded-lg bg-amber-accent text-wood-950 font-bold text-xs hover:brightness-110 transition-all flex items-center space-x-1.5 shadow-md">
                         <i class="fa-solid fa-plus-circle"></i>
-                        <span>Add Photo / Product</span>
+                        <span>Add Photo / Product[cite: 2]</span>
                     </button>
 
                     <!-- Cart Trigger -->
                     <button onclick="openCartModal()" class="relative p-2.5 rounded-full bg-wood-800/80 border border-wood-700 text-wood-200 hover:text-amber-accent hover:border-amber-accent/50 transition-all">
                         <i class="fa-solid fa-basket-shopping text-lg"></i>
-                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-amber-accent text-wood-950 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform">0</span>
+                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-amber-accent text-wood-950 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform">0[cite: 2]</span>
                     </button>
                 </div>
             </div>
@@ -200,10 +159,10 @@
             <div class="absolute bottom-3 right-3 flex items-center space-x-2">
                 <button onclick="openImageManagerModal('banner')" class="admin-element hidden bg-amber-accent/95 hover:bg-amber-bright text-wood-950 font-bold text-xs px-3.5 py-2 rounded-lg shadow-lg flex items-center space-x-1.5 transition-all">
                     <i class="fa-solid fa-camera"></i>
-                    <span>Change Banner Image</span>
+                    <span>Change Banner Image[cite: 2]</span>
                 </button>
                 <div class="bg-wood-950/80 backdrop-blur-md px-3 py-2 rounded-lg border border-wood-700/50 text-[11px] text-wood-300 hidden sm:block">
-                    <i class="fa-solid fa-award text-amber-accent mr-1"></i> Original Handcrafted Creations
+                    <i class="fa-solid fa-award text-amber-accent mr-1"></i> Original Handcrafted Creations[cite: 2]
                 </div>
             </div>
         </div>
@@ -213,27 +172,27 @@
             <div class="space-y-2 max-w-3xl">
                 <div class="flex items-center space-x-2">
                     <span class="inline-block px-3 py-1 rounded-full bg-amber-accent/20 border border-amber-accent/40 text-amber-accent text-xs font-semibold tracking-wider uppercase">
-                        Handcrafted Woodworks
+                        Handcrafted Woodworks[cite: 2]
                     </span>
-                    <span class="text-xs text-wood-400 font-serif">Estd. 2024</span>
+                    <span class="text-xs text-wood-400 font-serif">Estd. 2024[cite: 2]</span>
                 </div>
                 <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-wood-50">
-                    Timeless Quality, <span class="wood-gradient-text">Custom Built</span>
+                    Timeless Quality, <span class="wood-gradient-text">Custom Built[cite: 2]</span>
                 </h1>
                 <p class="text-xs sm:text-sm text-wood-200/90 leading-relaxed">
-                    Explore our handcrafted end-grain boards, seasonal wall art, scale models, and custom furniture built from sustainable hardwoods.
+                    Explore our handcrafted end-grain boards, seasonal wall art, scale models, and custom furniture built from sustainable hardwoods.[cite: 2]
                 </p>
             </div>
 
             <!-- Action CTAs -->
             <div class="flex flex-col sm:flex-row gap-3 shrink-0">
                 <a href="#shop" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-sm shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
-                    <span>Browse Catalog</span>
+                    <span>Browse Catalog[cite: 2]</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </a>
                 <button onclick="openImageManagerModal('add')" class="admin-element hidden px-6 py-3 rounded-xl bg-wood-900 border border-amber-accent/60 text-amber-bright font-semibold text-sm hover:bg-amber-accent hover:text-wood-950 transition-all flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-plus-circle"></i>
-                    <span>Add New Photo & Item</span>
+                    <span>Add New Photo & Item[cite: 2]</span>
                 </button>
             </div>
         </div>
@@ -244,43 +203,43 @@
         <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-amber-accent/30 shadow-xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-wood-800 pb-4 gap-4">
                 <div>
-                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase"><i class="fa-solid fa-circle-info mr-1"></i> Image & Store Backup Guide</span>
-                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wood-50 mt-1">How to Manage Products & Backup Store Data</h2>
+                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase"><i class="fa-solid fa-circle-info mr-1"></i> Image & Store Backup Guide[cite: 2]</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wood-50 mt-1">How to Manage Products & Backup Store Data[cite: 2]</h2>
                 </div>
                 <div class="flex items-center space-x-2">
                     <button onclick="exportCatalogData()" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-amber-accent font-bold text-xs border border-wood-700 transition-all flex items-center space-x-1.5 shadow-md">
                         <i class="fa-solid fa-download"></i>
-                        <span>Export Store Backup</span>
+                        <span>Export Store Backup[cite: 2]</span>
                     </button>
                     <button onclick="openImageManagerModal('banner')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs shadow-lg hover:brightness-110 transition-all flex items-center space-x-1.5">
                         <i class="fa-solid fa-camera"></i>
-                        <span>Change Banner</span>
+                        <span>Change Banner[cite: 2]</span>
                     </button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
-                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">1</div>
-                    <h3 class="font-serif text-base font-bold text-wood-100">Change Top Hero Banner</h3>
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">1[cite: 2]</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Change Top Hero Banner[cite: 2]</h3>
                     <p class="text-xs text-wood-300 leading-relaxed">
-                        Click <strong>"Change Banner Image"</strong> on the banner photo or select the <strong>"Hero Banner"</strong> tab in the manager to upload a new banner image from your device.
+                        Click <strong>"Change Banner Image"</strong> on the banner photo or select the <strong>"Hero Banner"</strong> tab in the manager to upload a new banner image from your device.[cite: 2]
                     </p>
                 </div>
 
                 <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
-                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">2</div>
-                    <h3 class="font-serif text-base font-bold text-wood-100">Add Brand New Items</h3>
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">2[cite: 2]</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Add Brand New Items[cite: 2]</h3>
                     <p class="text-xs text-wood-300 leading-relaxed">
-                        Click <strong>"+ Add Photo / Product"</strong> to add completely new craft items with title, price, wood species, description, and your custom uploaded photo.
+                        Click <strong>"+ Add Photo / Product"</strong> to add completely new craft items with title, price, wood species, description, and your custom uploaded photo.[cite: 2]
                     </p>
                 </div>
 
                 <div class="glass-card p-5 rounded-xl space-y-3 relative border-t-2 border-t-amber-accent">
-                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">3</div>
-                    <h3 class="font-serif text-base font-bold text-wood-100">Transfer Data Across Domains</h3>
+                    <div class="w-8 h-8 rounded-full bg-amber-accent/20 text-amber-accent font-bold flex items-center justify-center text-sm">3[cite: 2]</div>
+                    <h3 class="font-serif text-base font-bold text-wood-100">Transfer Data Across Domains[cite: 2]</h3>
                     <p class="text-xs text-wood-300 leading-relaxed">
-                        When changing Netlify domain names, use <strong>"Export Store Backup"</strong> to download your product database, then click <strong>"Import Store Backup"</strong> on your new URL!
+                        When changing Netlify domain names, use <strong>"Export Store Backup"</strong> to download your product database, then click <strong>"Import Store Backup"</strong> on your new URL![cite: 2]
                     </p>
                 </div>
             </div>
@@ -291,19 +250,19 @@
     <section id="shop" class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-wood-800 pb-6">
             <div>
-                <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Artisan Woodcraft Catalog</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50 mt-1">Featured Wooden Products</h2>
+                <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Artisan Woodcraft Catalog[cite: 2]</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50 mt-1">Featured Wooden Products[cite: 2]</h2>
             </div>
             <div class="admin-element hidden flex items-center space-x-3">
                 <button onclick="exportCatalogData()" title="Download a backup file of your store items" class="px-3 py-2 bg-wood-900 border border-wood-700 hover:border-amber-accent text-wood-300 hover:text-amber-accent rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-download"></i> Export Backup
+                    <i class="fa-solid fa-download"></i> Export Backup[cite: 2]
                 </button>
                 <button onclick="resetAllImages()" class="px-3 py-2 bg-wood-900 border border-wood-700 hover:border-red-400 text-wood-400 hover:text-red-300 rounded-lg text-xs font-semibold transition-all">
-                    <i class="fa-solid fa-rotate-left mr-1"></i> Reset Catalog
+                    <i class="fa-solid fa-rotate-left mr-1"></i> Reset Catalog[cite: 2]
                 </button>
                 <button onclick="openImageManagerModal('add')" class="px-4 py-2 bg-amber-accent text-wood-950 font-bold hover:brightness-110 rounded-lg text-xs transition-all flex items-center space-x-2">
                     <i class="fa-solid fa-plus-circle"></i>
-                    <span>+ Add New Product</span>
+                    <span>+ Add New Product[cite: 2]</span>
                 </button>
             </div>
         </div>
@@ -311,22 +270,22 @@
         <!-- Filter Category Tabs -->
         <div class="flex flex-wrap gap-2 sm:gap-3 mb-8" id="categoryFilters">
             <button onclick="filterProducts('all')" data-cat="all" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-amber-accent text-wood-950 shadow-md">
-                All Collections
+                All Collections[cite: 2]
             </button>
             <button onclick="filterProducts('Kitchen & Dining')" data-cat="Kitchen & Dining" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
-                Kitchen & Dining
+                Kitchen & Dining[cite: 2]
             </button>
             <button onclick="filterProducts('Furniture')" data-cat="Furniture" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
-                Furniture
+                Furniture[cite: 2]
             </button>
             <button onclick="filterProducts('Games')" data-cat="Games" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
-                Games
+                Games[cite: 2]
             </button>
             <button onclick="filterProducts('Seasonal Decor')" data-cat="Seasonal Decor" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
-                Seasonal Decor
+                Seasonal Decor[cite: 2]
             </button>
             <button onclick="filterProducts('Nautical & Planters')" data-cat="Nautical & Planters" class="filter-btn px-5 py-2.5 rounded-full text-xs font-medium text-wood-300 bg-wood-900 border border-wood-700 hover:text-amber-accent hover:border-amber-accent transition-all">
-                Nautical & Planters
+                Nautical & Planters[cite: 2]
             </button>
         </div>
 
@@ -336,10 +295,10 @@
         <!-- Empty Results -->
         <div id="noResults" class="hidden text-center py-16 glass-panel rounded-2xl space-y-3">
             <i class="fa-solid fa-box-open text-4xl text-wood-500"></i>
-            <h3 class="text-xl font-serif font-bold text-wood-200">No products found</h3>
-            <p class="text-wood-400 text-sm">Try resetting your filters or search keywords, or add a new item.</p>
+            <h3 class="text-xl font-serif font-bold text-wood-200">No products found[cite: 2]</h3>
+            <p class="text-wood-400 text-sm">Try resetting your filters or search keywords, or add a new item.[cite: 2]</p>
             <button onclick="openImageManagerModal('add')" class="px-5 py-2.5 text-xs bg-amber-accent text-wood-950 font-bold rounded-lg hover:brightness-110">
-                + Add Your First Custom Product
+                + Add Your First Custom Product[cite: 2]
             </button>
         </div>
     </section>
@@ -349,25 +308,25 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div class="lg:col-span-5 space-y-4">
-                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Custom Woodworking</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50">Request a Custom Creation</h2>
+                    <span class="text-amber-accent text-xs font-bold tracking-widest uppercase">Custom Woodworking[cite: 2]</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wood-50">Request a Custom Creation[cite: 2]</h2>
                     <p class="text-wood-300 text-sm leading-relaxed">
-                        Have a unique size, specific grain preference, or custom engraving in mind? We craft made-to-order furniture, engraved wall mounts, and corporate gifts.
+                        Have a unique size, specific grain preference, or custom engraving in mind? We craft made-to-order furniture, engraved wall mounts, and corporate gifts.[cite: 2]
                     </p>
 
                     <div class="space-y-3 pt-2">
                         <div class="flex items-start space-x-3">
                             <i class="fa-solid fa-check text-amber-accent mt-1"></i>
                             <div>
-                                <h4 class="text-sm font-bold text-wood-200">Precision Laser Engraving</h4>
-                                <p class="text-xs text-wood-400">Personalize with family names, dates, or custom logos.</p>
+                                <h4 class="text-sm font-bold text-wood-200">Precision Laser Engraving[cite: 2]</h4>
+                                <p class="text-xs text-wood-400">Personalize with family names, dates, or custom logos.[cite: 2]</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
                             <i class="fa-solid fa-check text-amber-accent mt-1"></i>
                             <div>
-                                <h4 class="text-sm font-bold text-wood-200">Choice of Fine Hardwoods</h4>
-                                <p class="text-xs text-wood-400">Walnut, White Oak, Cherry, Hard Maple & Teak.</p>
+                                <h4 class="text-sm font-bold text-wood-200">Choice of Fine Hardwoods[cite: 2]</h4>
+                                <p class="text-xs text-wood-400">Walnut, White Oak, Cherry, Hard Maple & Teak.[cite: 2]</p>
                             </div>
                         </div>
                     </div>
@@ -375,25 +334,25 @@
 
                 <div class="lg:col-span-7">
                     <div class="glass-panel p-6 sm:p-8 rounded-2xl shadow-xl">
-                        <!-- Netlify Form Integration with AJAX Handler ID -->
-                        <form name="custom-commission" method="POST" data-netlify="true" id="commissionForm" class="space-y-4">
+                        <!-- Netlify Form Integration Fixes -->
+                        <form name="custom-commission" method="POST" data-netlify="true" action="/?success=true" class="space-y-4">
                             <input type="hidden" name="form-name" value="custom-commission" />
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-medium text-wood-300 mb-1">Your Name</label>
+                                    <label class="block text-xs font-medium text-wood-300 mb-1">Your Name[cite: 2]</label>
                                     <input type="text" name="name" required placeholder="Jane Doe" class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-medium text-wood-300 mb-1">Email Address</label>
+                                    <label class="block text-xs font-medium text-wood-300 mb-1">Email Address[cite: 2]</label>
                                     <input type="email" name="email" required placeholder="jane@example.com" class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-wood-300 mb-1">Project Details & Requirements</label>
+                                <label class="block text-xs font-medium text-wood-300 mb-1">Project Details & Requirements[cite: 2]</label>
                                 <textarea name="project_details" rows="3" required placeholder="Describe what you would like crafted..." class="w-full bg-wood-950 text-wood-100 text-sm rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
                             </div>
                             <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-sm rounded-lg shadow-lg hover:brightness-110 transition-all">
-                                Send Commission Inquiry
+                                Send Commission Inquiry[cite: 2]
                             </button>
                         </form>
                     </div>
@@ -406,14 +365,14 @@
     <footer class="bg-wood-950 border-t border-wood-800 text-wood-400 mt-auto py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded bg-amber-accent text-wood-950 font-serif font-bold flex items-center justify-center text-sm">AJR</div>
-                <span class="font-serif text-lg font-bold text-wood-100">AJR WOODCRAFT</span>
+                <div class="w-8 h-8 rounded bg-amber-accent text-wood-950 font-serif font-bold flex items-center justify-center text-sm">AJR[cite: 2]</div>
+                <span class="font-serif text-lg font-bold text-wood-100">AJR WOODCRAFT[cite: 2]</span>
             </div>
-            <p class="text-xs text-wood-500">&copy; 2026 AJR Woodcraft. Handcrafted Quality Guaranteed.</p>
+            <p class="text-xs text-wood-500">&copy; 2026 AJR Woodcraft. Handcrafted Quality Guaranteed.[cite: 2]</p>
             <div class="admin-element hidden flex space-x-4 text-xs text-wood-400">
-                <button onclick="scrollToGuide()" class="hover:text-amber-accent transition-colors">Setup Guide</button>
-                <button onclick="openImageManagerModal('banner')" class="hover:text-amber-accent transition-colors">Change Banner</button>
-                <button onclick="openImageManagerModal('add')" class="hover:text-amber-accent transition-colors">+ Add Products</button>
+                <button onclick="scrollToGuide()" class="hover:text-amber-accent transition-colors">Setup Guide[cite: 2]</button>
+                <button onclick="openImageManagerModal('banner')" class="hover:text-amber-accent transition-colors">Change Banner[cite: 2]</button>
+                <button onclick="openImageManagerModal('add')" class="hover:text-amber-accent transition-colors">+ Add Products[cite: 2]</button>
             </div>
         </div>
     </footer>
@@ -428,8 +387,8 @@
                         <i class="fa-solid fa-store"></i>
                     </div>
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-wood-100">Store Photo & Product Manager</h3>
-                        <p class="text-xs text-wood-400">Add custom photos, update banner, or edit products</p>
+                        <h3 class="font-serif text-lg font-bold text-wood-100">Store Photo & Product Manager[cite: 2]</h3>
+                        <p class="text-xs text-wood-400">Add custom photos, update banner, or edit products[cite: 2]</p>
                     </div>
                 </div>
                 <button onclick="closeImageManagerModal()" class="text-wood-400 hover:text-wood-100 p-2">
@@ -441,19 +400,19 @@
             <div class="flex border-b border-wood-800 bg-wood-950 px-4 sm:px-6 overflow-x-auto">
                 <button id="tabBannerBtn" onclick="switchManagerTab('banner')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-image"></i>
-                    <span>Hero Banner</span>
+                    <span>Hero Banner[cite: 2]</span>
                 </button>
                 <button id="tabAddBtn" onclick="switchManagerTab('add')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-amber-accent text-amber-accent transition-all flex items-center space-x-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-plus-circle"></i>
-                    <span>+ Add New Product</span>
+                    <span>+ Add New Product[cite: 2]</span>
                 </button>
                 <button id="tabUpdateBtn" onclick="switchManagerTab('update')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-pen-to-square"></i>
-                    <span>Edit Product Details & Photo</span>
+                    <span>Edit Product Details & Photo[cite: 2]</span>
                 </button>
                 <button id="tabBackupBtn" onclick="switchManagerTab('backup')" class="py-3 px-3.5 font-bold text-xs border-b-2 border-transparent text-wood-400 hover:text-wood-200 transition-all flex items-center space-x-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-floppy-disk"></i>
-                    <span>Backup / Transfer</span>
+                    <span>Backup / Transfer[cite: 2]</span>
                 </button>
             </div>
 
@@ -462,29 +421,29 @@
                 <!-- TAB 1: HERO BANNER MANAGEMENT -->
                 <div id="tabBannerContent" class="hidden space-y-6">
                     <div class="space-y-2">
-                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Current Hero Banner Preview</label>
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Current Hero Banner Preview[cite: 2]</label>
                         <div class="rounded-xl overflow-hidden border border-wood-700 bg-wood-950 p-2">
                             <img id="adminBannerPreview" src="" alt="Banner Preview" class="w-full h-36 object-contain rounded-lg bg-wood-900">
                         </div>
                     </div>
                     <div class="space-y-3">
-                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Upload New Banner Image</label>
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Upload New Banner Image[cite: 2]</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="p-4 bg-wood-900/60 rounded-xl border border-dashed border-wood-600 hover:border-amber-accent transition-colors flex flex-col items-center justify-center text-center space-y-2">
                                 <i class="fa-solid fa-cloud-arrow-up text-2xl text-amber-accent"></i>
-                                <span class="text-xs font-bold text-wood-200">Upload Banner File</span>
+                                <span class="text-xs font-bold text-wood-200">Upload Banner File[cite: 2]</span>
                                 <input type="file" id="bannerFileInput" accept="image/*" onchange="handleBannerFileUpload(event)" class="hidden">
                                 <button type="button" onclick="document.getElementById('bannerFileInput').click()" class="px-3.5 py-1.5 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-wood-100 border border-wood-600">
-                                    Choose Banner Photo
+                                    Choose Banner Photo[cite: 2]
                                 </button>
                             </div>
                             <div class="p-4 bg-wood-900/60 rounded-xl border border-wood-700 flex flex-col justify-between space-y-2">
                                 <div>
-                                    <span class="text-xs font-bold text-wood-200 block mb-1">Or Paste Web Image Link</span>
+                                    <span class="text-xs font-bold text-wood-200 block mb-1">Or Paste Web Image Link[cite: 2]</span>
                                     <input type="url" id="bannerUrlInput" placeholder="https://..." class="w-full bg-wood-950 text-wood-100 text-xs rounded border border-wood-700 p-2 focus:outline-none focus:border-amber-accent">
                                 </div>
                                 <button type="button" onclick="applyBannerUrl()" class="w-full py-1.5 rounded bg-wood-800 hover:bg-wood-700 text-xs font-semibold text-amber-accent border border-wood-600">
-                                    Apply Banner Link
+                                    Apply Banner Link[cite: 2]
                                 </button>
                             </div>
                         </div>
@@ -496,48 +455,48 @@
                     <form onsubmit="handleAddNewProduct(event)" class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *[cite: 2]</label>
                                 <input type="text" id="newTitle" required placeholder="e.g. Cedar Coaster Set" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *[cite: 2]</label>
                                 <select id="newCategory" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
-                                    <option value="Kitchen & Dining">Kitchen & Dining</option>
-                                    <option value="Furniture">Furniture</option>
-                                    <option value="Games">Games</option>
-                                    <option value="Seasonal Decor" selected>Seasonal Decor</option>
-                                    <option value="Nautical & Planters">Nautical & Planters</option>
+                                    <option value="Kitchen & Dining">Kitchen & Dining[cite: 2]</option>
+                                    <option value="Furniture">Furniture[cite: 2]</option>
+                                    <option value="Games">Games[cite: 2]</option>
+                                    <option value="Seasonal Decor" selected>Seasonal Decor[cite: 2]</option>
+                                    <option value="Nautical & Planters">Nautical & Planters[cite: 2]</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *[cite: 2]</label>
                                 <input type="number" id="newPrice" step="0.01" required placeholder="45.00" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material[cite: 2]</label>
                                 <input type="text" id="newWoodType" placeholder="e.g. Red Cedar & Walnut" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description</label>
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description[cite: 2]</label>
                             <textarea id="newDesc" rows="2" placeholder="Brief details about craft, finish, and dimensions..." class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
                         </div>
                         <div class="space-y-2 border-t border-wood-800 pt-3">
-                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Product Photo *</label>
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Product Photo *[cite: 2]</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="p-3 bg-wood-900/60 rounded-xl border border-dashed border-wood-600 hover:border-amber-accent transition-colors text-center space-y-1.5 flex flex-col items-center justify-center">
                                     <i class="fa-solid fa-cloud-arrow-up text-amber-accent text-xl"></i>
-                                    <span class="text-xs font-bold text-wood-200">Upload Image File</span>
+                                    <span class="text-xs font-bold text-wood-200">Upload Image File[cite: 2]</span>
                                     <input type="file" id="newFileInput" accept="image/*" onchange="handleNewProductFile(event)" class="hidden">
                                     <button type="button" onclick="document.getElementById('newFileInput').click()" class="px-3 py-1 rounded bg-wood-800 hover:bg-wood-700 text-xs text-wood-100 border border-wood-600">
-                                        Choose Local Photo
+                                        Choose Local Photo[cite: 2]
                                     </button>
                                 </div>
                                 <div class="p-3 bg-wood-900/60 rounded-xl border border-wood-700 flex flex-col justify-between space-y-2">
                                     <div>
-                                        <span class="text-xs font-bold text-wood-200 block">Or Paste Web Image URL</span>
+                                        <span class="text-xs font-bold text-wood-200 block">Or Paste Web Image URL[cite: 2]</span>
                                         <input type="url" id="newUrlInput" oninput="handleNewUrlInput(this.value)" placeholder="https://..." class="w-full bg-wood-950 text-wood-100 text-xs rounded border border-wood-700 p-1.5 mt-1 focus:outline-none focus:border-amber-accent">
                                     </div>
                                 </div>
@@ -545,14 +504,14 @@
                             <div id="newImagePreviewContainer" class="hidden flex items-center space-x-3 p-3 bg-wood-950 rounded-xl border border-wood-800">
                                 <img id="newImagePreview" src="" alt="Preview" class="w-16 h-16 object-cover rounded-lg bg-wood-900 border border-wood-700">
                                 <div class="text-xs">
-                                    <span class="text-amber-accent font-bold block">Photo Attached</span>
-                                    <span id="newImageFilename" class="text-wood-400 block truncate max-w-[250px]">Image ready</span>
+                                    <span class="text-amber-accent font-bold block">Photo Attached[cite: 2]</span>
+                                    <span id="newImageFilename" class="text-wood-400 block truncate max-w-[250px]">Image ready[cite: 2]</span>
                                 </div>
                             </div>
                         </div>
                         <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
                             <i class="fa-solid fa-plus-circle"></i>
-                            <span>Add Product to Store Catalog</span>
+                            <span>Add Product to Store Catalog[cite: 2]</span>
                         </button>
                     </form>
                 </div>
@@ -560,43 +519,43 @@
                 <!-- TAB 3: EDIT EXISTING ITEM -->
                 <div id="tabUpdateContent" class="hidden space-y-5">
                     <div class="space-y-1">
-                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Select Product to Edit</label>
+                        <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider">Select Product to Edit[cite: 2]</label>
                         <select id="adminProductSelect" onchange="populateAdminForm()" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></select>
                     </div>
                     <form onsubmit="handleSaveEditedProduct(event)" class="space-y-4 pt-2 border-t border-wood-800">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Title *[cite: 2]</label>
                                 <input type="text" id="editTitle" required class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Category *[cite: 2]</label>
                                 <select id="editCategory" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
-                                    <option value="Kitchen & Dining">Kitchen & Dining</option>
-                                    <option value="Furniture">Furniture</option>
-                                    <option value="Games">Games</option>
-                                    <option value="Seasonal Decor">Seasonal Decor</option>
-                                    <option value="Nautical & Planters">Nautical & Planters</option>
+                                    <option value="Kitchen & Dining">Kitchen & Dining[cite: 2]</option>
+                                    <option value="Furniture">Furniture[cite: 2]</option>
+                                    <option value="Games">Games[cite: 2]</option>
+                                    <option value="Seasonal Decor">Seasonal Decor[cite: 2]</option>
+                                    <option value="Nautical & Planters">Nautical & Planters[cite: 2]</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Price ($USD) *[cite: 2]</label>
                                 <input type="number" id="editPrice" step="0.01" required class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material</label>
+                                <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Wood Species / Material[cite: 2]</label>
                                 <input type="text" id="editWoodType" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description</label>
+                            <label class="block text-xs font-bold uppercase text-amber-accent tracking-wider mb-1">Product Description[cite: 2]</label>
                             <textarea id="editDesc" rows="2" class="w-full bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 p-2.5 focus:outline-none focus:border-amber-accent"></textarea>
                         </div>
                         <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-accent to-amber-600 text-wood-950 font-bold text-xs rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center justify-center space-x-2">
                             <i class="fa-solid fa-floppy-disk"></i>
-                            <span>Save Product Changes</span>
+                            <span>Save Product Changes[cite: 2]</span>
                         </button>
                     </form>
                 </div>
@@ -604,13 +563,13 @@
                 <!-- TAB 4: BACKUP & TRANSFER -->
                 <div id="tabBackupContent" class="hidden space-y-6">
                     <div class="space-y-2">
-                        <h4 class="font-serif text-base font-bold text-wood-100">Store Data Backup & Domain Migration</h4>
-                        <p class="text-xs text-wood-300 leading-relaxed">Download and restore your product database across Netlify domains.</p>
+                        <h4 class="font-serif text-base font-bold text-wood-100">Store Data Backup & Domain Migration[cite: 2]</h4>
+                        <p class="text-xs text-wood-300 leading-relaxed">Download and restore your product database across Netlify domains.[cite: 2]</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <button onclick="exportCatalogData()" class="py-3 bg-wood-800 text-amber-accent rounded-lg text-xs font-bold">Export Store Backup</button>
+                        <button onclick="exportCatalogData()" class="py-3 bg-wood-800 text-amber-accent rounded-lg text-xs font-bold">Export Store Backup[cite: 2]</button>
                         <input type="file" id="importFileInput" accept=".json" onchange="importCatalogData(event)" class="hidden">
-                        <button onclick="document.getElementById('importFileInput').click()" class="py-3 bg-amber-accent text-wood-950 rounded-lg text-xs font-bold">Import Store Backup</button>
+                        <button onclick="document.getElementById('importFileInput').click()" class="py-3 bg-amber-accent text-wood-950 rounded-lg text-xs font-bold">Import Store Backup[cite: 2]</button>
                     </div>
                 </div>
             </div>
@@ -633,7 +592,7 @@
             <div class="p-4 border-b border-wood-800 flex items-center justify-between bg-wood-900">
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-basket-shopping text-amber-accent"></i>
-                    <h3 class="font-serif text-lg font-bold text-wood-100">Your Craft Cart</h3>
+                    <h3 class="font-serif text-lg font-bold text-wood-100">Your Craft Cart[cite: 2]</h3>
                 </div>
                 <button onclick="closeCartModal()" class="text-wood-400 hover:text-wood-100 p-2">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -642,30 +601,28 @@
             <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
             <div class="p-4 border-t border-wood-800 bg-wood-900 space-y-3">
                 <div class="flex items-center justify-between text-sm">
-                    <span class="text-wood-300">Subtotal:</span>
-                    <span id="cartSubtotal" class="font-bold text-amber-accent text-base">$0.00</span>
+                    <span class="text-wood-300">Subtotal:[cite: 2]</span>
+                    <span id="cartSubtotal" class="font-bold text-amber-accent text-base">$0.00[cite: 2]</span>
+                </div>
+                <!-- Delivery / Shipping Notice -->
+                <div class="p-2.5 bg-wood-950 rounded-lg border border-wood-800 text-[11px] text-wood-300 flex items-start space-x-2">
+                    <i class="fa-solid fa-truck-fast text-amber-accent mt-0.5"></i>
+                    <div>
+                        <strong class="text-wood-200">Handcrafted Delivery Notice:</strong> Each piece is carefully built to order. Please allow 1-2 weeks for standard craft processing and secure shipping.
+                    </div>
                 </div>
                 <button onclick="checkoutCart()" class="w-full py-3 bg-amber-accent text-wood-950 font-bold rounded-lg hover:brightness-110 transition-all text-sm flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-lock"></i>
-                    <span>Checkout Order</span>
+                    <span>Checkout Order[cite: 2]</span>
                 </button>
             </div>
-        </div>
-    </div>
-
-    <!-- ACKNOWLEDGEMENT MODAL -->
-    <div id="ackModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3 class="font-serif text-xl font-bold text-amber-accent mb-2">Thank You!</h3>
-            <p class="text-sm text-wood-200">Your message has been sent successfully. We look forward to connecting with you about your custom woodworking project!</p>
         </div>
     </div>
 
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-amber-accent/40 text-wood-100 px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
         <i id="toastIcon" class="fa-solid fa-circle-check text-amber-accent text-lg"></i>
-        <span id="toastMsg" class="text-sm font-medium">Notification message</span>
+        <span id="toastMsg" class="text-sm font-medium">Notification message[cite: 2]</span>
     </div>
 
     <!-- JAVASCRIPT APPLICATION LOGIC -->
@@ -690,28 +647,6 @@
                 woodType: "Red Oak & Walnut"
             },
             {
-                id: 'prod-2',
-                name: "Handcrafted Cedar Garden Planter Boxes",
-                category: "Nautical & Planters",
-                price: 125.00,
-                rating: 4.9,
-                reviews: 31,
-                image: "Cedar_Planters.jpg",
-                description: "Sturdy raised garden planter boxes built from weather-resistant aromatic western red cedar.",
-                woodType: "Western Red Cedar"
-            },
-            {
-                id: 'prod-3',
-                name: "Halloween Tealight Holder Trio",
-                category: "Seasonal Decor",
-                price: 48.00,
-                rating: 4.9,
-                reviews: 28,
-                image: "Halloween_Sconces.png",
-                description: "Set of rustic wooden carved pumpkins with hand-painted seasonal detailing and pillar stems.",
-                woodType: "Stained Hardwood"
-            },
-            {
                 id: 'prod-4',
                 name: "Halloween Decorative BOO Blocks",
                 category: "Seasonal Decor",
@@ -734,17 +669,6 @@
                 woodType: "Pine & Birch"
             },
             {
-                id: 'prod-6',
-                name: "Rustic Wooden Candy Corn Trio",
-                category: "Seasonal Decor",
-                price: 42.00,
-                rating: 4.8,
-                reviews: 15,
-                image: "Candy_Corn.jpg",
-                description: "Graduated decorative wooden candy corn sculptures with custom gradient autumn finishes.",
-                woodType: "Solid Hardwood"
-            },
-            {
                 id: 'prod-7',
                 name: "Black Cat on Crescent Moon Live Edge Plaque",
                 category: "Seasonal Decor",
@@ -765,17 +689,30 @@
                 image: "Boat_planter.jpg",
                 description: "Handcrafted flat-bottom wooden skiff planter finished in classic maritime colors with decorative rigging.",
                 woodType: "Cedar & Pine"
-            }
+            },
             {
-    id: 'prod-1790457736710',
-    name: "3D Wood Relief Howling Wolf",
-    category: "Furniture",
-    price: 35.00,
-    rating: 5.0,
-    reviews: 1,
-    image: "3D Woodrelief.png",
-    woodType: "Hardwood"
-}        ];
+                id: 'prod-9',
+                name: "Candy Corn",
+                category: "Seasonal Decor",
+                price: 6.00,
+                rating: 4.5,
+                reviews: 20,
+                image: "Candy_Corn.jpg",
+                description: "Looks good enough to eat but do not. These are perfect for your holiday decor",
+                woodType: "Painted Pine"
+            },
+            {
+                id: 'prod-10',
+                name: "Pumpkin Lantern",
+                category: "Seasonal Decor",
+                price: 35.00,
+                rating: 4.9,
+                reviews: 29,
+                image: "Pumpkin_lantern.png",
+                description: "Laser cut pumpkin lantern. Hand painted. Colors can be customized. Ask below",
+                woodType: "0.3 in. plywood"
+            }
+        ];
 
         function checkAdminStatus() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -844,44 +781,6 @@
             renderProducts(products);
             populateAdminDropdown();
             updateCartUI();
-
-            // Netlify Form AJAX submission handler & Modal Trigger
-            const commissionForm = document.getElementById('commissionForm');
-            const modal = document.getElementById('ackModal');
-            const closeBtn = document.querySelector('.close-btn');
-
-            if (commissionForm) {
-                commissionForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(commissionForm);
-
-                    fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams(formData).toString()
-                    })
-                    .then(() => {
-                        modal.style.display = 'block';
-                        commissionForm.reset();
-                    })
-                    .catch((error) => {
-                        alert('There was a problem submitting your message. Please try again.');
-                        console.error('Form submission error:', error);
-                    });
-                });
-            }
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', () => {
-                    modal.style.display = 'none';
-                });
-            }
-
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
         });
 
         function loadBannerFromStorage() {
@@ -1436,6 +1335,16 @@
                         <span class="text-xs font-bold text-amber-accent uppercase tracking-wider">${escapeHtml(product.category)}</span>
                         <h3 class="font-serif text-xl font-bold text-wood-100">${escapeHtml(product.name)}</h3>
                         <p class="text-xs text-wood-300 leading-relaxed">${escapeHtml(product.description || 'Handcrafted custom woodcraft.')}</p>
+                        
+                        <!-- Product Inquiry / Email Correspondence Section -->
+                        <div class="pt-3 border-t border-wood-800 space-y-2">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-accent block"><i class="fa-solid fa-envelope mr-1"></i> Questions about this item? Ask Tony</span>
+                            <div class="flex gap-2">
+                                <input type="email" id="quickInquiryEmail-${product.id}" placeholder="Your email..." class="bg-wood-950 text-wood-100 text-xs rounded-lg border border-wood-700 px-3 py-2 flex-1 focus:outline-none focus:border-amber-accent">
+                                <button onclick="sendProductInquiry('${product.id}')" class="px-4 py-2 bg-wood-800 hover:bg-wood-700 text-amber-accent border border-wood-700 font-bold text-xs rounded-lg transition-all">Send</button>
+                            </div>
+                        </div>
+
                         <div class="text-xs text-wood-400 py-2 border-y border-wood-800">
                             <strong>Wood Type:</strong> ${escapeHtml(product.woodType || 'Hardwood')}
                         </div>
@@ -1449,6 +1358,21 @@
                 </div>
             `;
             modal.classList.remove('invisible');
+        }
+
+        function sendProductInquiry(productId) {
+            const product = products.find(p => p.id === productId);
+            const emailInput = document.getElementById(`quickInquiryEmail-${productId}`);
+            const email = emailInput ? emailInput.value.trim() : '';
+
+            if (!email || !email.includes('@')) {
+                showToast("Please enter a valid email address!", true);
+                return;
+            }
+
+            showToast(`Inquiry sent for "${product.name}". Tony will reply soon!`);
+            emailInput.value = '';
+            closeQuickView();
         }
 
         function closeQuickView() {
